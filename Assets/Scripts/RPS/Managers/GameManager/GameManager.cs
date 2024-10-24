@@ -42,12 +42,14 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 resultText.text = $"You win! {playerHand.GetName()} beats {computerHand.GetName()}!";
+                ScoreBoardManager.Instance.AddScore(TurnSystem.Instance.player, 1);
                 break;
             case 0:
                 resultText.text = $"It's a draw! Both chose {playerHand.GetName()}!";
                 break;
             case -1:
                 resultText.text = $"You lose! {computerHand.GetName()} beats {playerHand.GetName()}!";
+                ScoreBoardManager.Instance.AddScore(TurnSystem.Instance.bot, 1);
                 break;
         }
     }
