@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class HandManager
 {
     // Dictionary to store registered hands (type name -> type)
-    private Dictionary<string, Type> handRegistry = new Dictionary<string, Type>();
+    public Dictionary<string, Type> handRegistry = new Dictionary<string, Type>();
 
     // Register a hand type dynamically
     public void RegisterHand(string name, Type handType)

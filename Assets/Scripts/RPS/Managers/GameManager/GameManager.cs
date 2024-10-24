@@ -5,30 +5,20 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI resultText;  // Text UI to display the result
-    private HandManager handFactory;
+    public HandManager handManager;
     private IHand playerHand;
     private IHand computerHand;
 
     private void Start()
     {
-        // Initialize the factory and register hand types
-        handFactory = new HandManager();
-        SetupRegisteredHands();
         resultText.text = "Choose your hand: Rock, Paper, or Scissors!";
-    }
-
-    private void SetupRegisteredHands()
-    {
-        handFactory.RegisterHand("Rock", typeof(Rock));
-        handFactory.RegisterHand("Paper", typeof(Paper));
-        handFactory.RegisterHand("Scissors", typeof(Scissors));
     }
 
     public void ChooseHand(string handName)
     {
         try
         {
-            playerHand = handFactory.CreateHand(handName);
+            playerHand = handManager.CreateHand(handName);
             PlayGame();
         }
         catch (Exception ex)
@@ -64,8 +54,8 @@ public class GameManager : MonoBehaviour
 
     private IHand GetRandomHand()
     {
-        var registeredHands = handFactory.GetRegisteredHandNames();
+        var registeredHands = handManager.GetRegisteredHandNames();
         int randomIndex = UnityEngine.Random.Range(0, registeredHands.Count);
-        return handFactory.CreateHand(registeredHands[randomIndex]);
+        return handManager.CreateHand(registeredHands[randomIndex]);
     }
 }
