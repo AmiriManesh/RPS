@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public class HandFactory
+public class HandManager
 {
     // Dictionary to store registered hands (type name -> type)
     private Dictionary<string, Type> handRegistry = new Dictionary<string, Type>();

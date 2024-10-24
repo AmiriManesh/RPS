@@ -5,14 +5,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI resultText;  // Text UI to display the result
-    private HandFactory handFactory;
+    private HandManager handFactory;
     private IHand playerHand;
     private IHand computerHand;
 
     private void Start()
     {
         // Initialize the factory and register hand types
-        handFactory = new HandFactory();
+        handFactory = new HandManager();
         SetupRegisteredHands();
         resultText.text = "Choose your hand: Rock, Paper, or Scissors!";
     }
