@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     private IHand playerHand;
     private IHand computerHand;
 
+    [SerializeField] private Player player;
+    [SerializeField] private Bot bot;
+
+
     private void Start()
     {
         resultText.text = "Choose your hand: Rock, Paper, or Scissors!";
@@ -52,6 +56,15 @@ public class GameManager : MonoBehaviour
                 ScoreBoardManager.Instance.AddScore(TurnSystem.Instance.bot, 1);
                 break;
         }
+        CheckResult();
+    }
+
+    private void CheckResult()
+    {
+        if (player.score == 5)
+            Debug.Log("Player wins");
+        if (bot.score == 5)
+            Debug.Log("Bot Wins");
     }
 
     private IHand GetRandomHand()
