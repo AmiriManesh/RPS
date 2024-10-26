@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Bot bot;
 
     public bool startGame = false;
+    private bool YouWon = false;
+
+    [SerializeField] private GameObject victory_Popup;
+    [SerializeField] private GameObject defeat_Popup;
 
     private void Start()
     {
@@ -67,9 +71,30 @@ public class GameManager : MonoBehaviour
     private void CheckResult()
     {
         if (player.score == 5)
-            Debug.Log("Player wins");
-        if (bot.score == 5)
-            Debug.Log("Bot Wins");
+        {
+            YouWon = true;
+            EndGame();
+        }
+        else if (bot.score == 5)
+        {
+            YouWon = false;
+            EndGame();
+        }
+    }
+
+    private void EndGame()
+    {
+        startGame = false;
+        if(YouWon)
+        {
+            victory_Popup.SetActive(true);
+            resultText.text = $"Congratulations, Player Won the Entire Game!";
+        }
+        else
+        {
+            defeat_Popup.SetActive(true);
+            resultText.text = $"Better Luck Next Time, Bot Wins the Entire Game!";
+        }
     }
 
     private IHand GetRandomHand()
