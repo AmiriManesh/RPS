@@ -4,7 +4,7 @@ public abstract class PlayerType : MonoBehaviour
 {
     public string playerName;
     public int score;
-    public int healthbar = 5;
+    public int health= 5;
     public PlayerType(string playerName, int score)
     {
         this.playerName = playerName;
@@ -13,6 +13,6 @@ public abstract class PlayerType : MonoBehaviour
 
     public virtual void Hit()
     {
-        healthbar--;
+        health--;
     }
 }

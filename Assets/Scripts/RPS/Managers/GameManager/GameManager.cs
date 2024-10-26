@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Bot bot;
 
+    public bool startGame = false;
 
     private void Start()
     {
@@ -20,15 +21,17 @@ public class GameManager : MonoBehaviour
 
     public void ChooseHand(string handName)
     {
-        try
-        {
-            playerHand = handManager.CreateHand(handName);
-            PlayGame();
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError(ex.Message);
-        }
+        if (!startGame) return;
+
+            try
+            {
+                playerHand = handManager.CreateHand(handName);
+                PlayGame();
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex.Message);
+            }
     }
 
     private void PlayGame()

@@ -1,18 +1,33 @@
-using System.Collections;
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowHand : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<RectTransform> buttons = new List<RectTransform>();
+    [SerializeField] private GameManager gameManager;
+    private void OnEnable()
     {
-        
+        foreach (var item in buttons)
+        {
+            item.localScale = Vector3.zero;
+        }
+        ShowhandSelection();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ShowhandSelection()
     {
-        
+        Sequence sequence = DOTween.Sequence();
+        foreach (var item in buttons)
+        {
+            item.gameObject.SetActive(true);
+            sequence.Append(item.DOScale(1f, 0.35f).SetEase(Ease.InQuad));
+            sequence.AppendInterval(0.75f);
+        }
+        sequence.OnComplete(() =>
+        {
+            gameManager.startGame = true;
+        });
     }
 }
