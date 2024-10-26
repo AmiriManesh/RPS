@@ -10,6 +10,8 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private float destination = 1090f;
     [SerializeField] private float duration = 1f;
     [SerializeField] private float wait_Time = 1.35f;
+    [Header("HealthBar")]
+    [SerializeField] private GameObject HealthBar;
 
     private IEnumerator Start()
     {
@@ -18,6 +20,7 @@ public class LoadingScreen : MonoBehaviour
     }
     private void BlackScreenTransition()
     {
-        loadingScreen.DOAnchorPos(new Vector2(destination, loadingScreen.anchoredPosition.y), duration).SetEase(Ease.OutQuad);
+        loadingScreen.DOAnchorPos(new Vector2(destination, loadingScreen.anchoredPosition.y), duration).SetEase(Ease.OutQuad).
+            OnComplete( () => HealthBar.SetActive(true));
     }
 }
