@@ -48,15 +48,15 @@ public class GameManager : MonoBehaviour
         switch (gameResult)
         {
             case 1:
-                resultText.text = $"You win! {playerHand.GetName()} beats {computerHand.GetName()}!";
+                resultText.text = $"Player wins! {playerHand.GetName()} beats {computerHand.GetName()}!";
                 ScoreBoardManager.Instance.AddScore(TurnSystem.Instance.player, 1);
                 bot.Hit();
                 break;
             case 0:
-                resultText.text = $"It's a draw! Both chose {playerHand.GetName()}!";
+                resultText.text = $"It's a draw! Both chose {playerHand.GetName()} and {computerHand.GetName()}!";
                 break;
             case -1:
-                resultText.text = $"You lose! {computerHand.GetName()} beats {playerHand.GetName()}!";
+                resultText.text = $"You lose, Bot wins! {computerHand.GetName()} beats {playerHand.GetName()}!";
                 ScoreBoardManager.Instance.AddScore(TurnSystem.Instance.bot, 1);
                 player.Hit();
                 break;

@@ -14,6 +14,8 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private GameObject HealthBar;
     [Header("Buttons")]
     [SerializeField] private GameObject Buttons;
+    [Header("Result Text")]
+    [SerializeField] private GameObject resultText;
 
     private IEnumerator Start()
     {
@@ -27,6 +29,7 @@ public class LoadingScreen : MonoBehaviour
             { 
                 HealthBar.SetActive(true);
                 Buttons.SetActive(true);
+                resultText.SetActive(true);
             });
     }
 }
