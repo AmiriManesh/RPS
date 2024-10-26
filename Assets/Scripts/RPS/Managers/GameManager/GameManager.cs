@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class GameManager : MonoBehaviour
     public bool startGame = false;
     private bool YouWon = false;
 
+    [Header("End Game")]
     [SerializeField] private GameObject victory_Popup;
     [SerializeField] private GameObject defeat_Popup;
+    [SerializeField] private List<GameObject> buttons = new List<GameObject>();
 
     private void Start()
     {
@@ -88,12 +91,18 @@ public class GameManager : MonoBehaviour
         if(YouWon)
         {
             victory_Popup.SetActive(true);
-            resultText.text = $"Congratulations, Player Won the Entire Game!";
+            resultText.color = Color.green;
+            resultText.text = "Congratulations, Player Won the Entire Game!";
         }
         else
         {
             defeat_Popup.SetActive(true);
-            resultText.text = $"Better Luck Next Time, Bot Wins the Entire Game!";
+            resultText.color = Color.red;
+            resultText.text = "Better Luck Next Time, Bot Wins the Entire Game!";
+        }
+        foreach (var item in buttons)
+        {
+            item.SetActive(false);
         }
     }
 

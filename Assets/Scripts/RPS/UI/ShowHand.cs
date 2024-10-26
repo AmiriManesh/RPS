@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShowHand : MonoBehaviour
 {
@@ -28,6 +27,7 @@ public class ShowHand : MonoBehaviour
         sequence.OnComplete(() =>
         {
             gameManager.startGame = true;
+            sequence.Kill();
         });
     }
 }
