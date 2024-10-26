@@ -4,4 +4,8 @@ public class Bot : PlayerType
     {
 
     }
+    public override void Hit()
+    {
+        base.Hit();
+    }
 }

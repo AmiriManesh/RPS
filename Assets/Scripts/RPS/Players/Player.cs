@@ -4,4 +4,8 @@ public class Player : PlayerType
     {
 
     }
+    public override void Hit()
+    {
+        base.Hit();
+    }
 }
